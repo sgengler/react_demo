@@ -9,8 +9,6 @@ var FriendsContainer = React.createClass({
 	getUser: function(username) {
 		var self = this;
 
-		var apiCreds = '?client_id=9d0b0fe0b89a917aaf7c&client_secret=6ad113d9305d7bf752ba07b647a04e1ec49d24f9';
-
 		var params = {
 			client_id: "9d0b0fe0b89a917aaf7c",
 			client_secret: "6ad113d9305d7bf752ba07b647a04e1ec49d24f9"
@@ -84,9 +82,7 @@ var SearchList = React.createClass({
 	handleAddNew: function(e){
 		e.preventDefault();
 		var searchName = e.target.value;
-		console.log(e.target);
-		console.log(this.props.searches);
-		var search = $.grep(this.props.searches, function(e){console.log(e.name); return e.name == searchName; });
+		var search = $.grep(this.props.searches, function(e){return e.name == searchName; });
 		this.props.searchUser(search.login);
 		this.setState({
 			searchInput: ''
@@ -107,8 +103,6 @@ var SearchList = React.createClass({
 
 		if(isNum) {this.props.searches.reverse()}
 		if(!this.state.toggle[field]) {this.props.searches.reverse()}
-
-		console.log(this.state.toggle);
 
 		this.setState(this.props.searches);
 		this.setState(this.state.toggle);
